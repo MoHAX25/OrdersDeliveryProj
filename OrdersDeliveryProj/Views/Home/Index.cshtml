@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Заказы на доставку - главная";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron bg-light p-5 rounded">
+                <h1 class="display-4">Добро пожаловать!</h1>
+                <p class="lead">Система управления заказами на доставку</p>
+                <hr class="my-4">
+                <p>Используйте приложение для создания и управления заказами на доставку грузов.</p>
+                <div class="d-flex gap-2 mt-4">
+                    <a class="btn btn-primary btn-lg" href="@Url.Action("Create", "Orders")" role="button">
+                        <i class="bi bi-plus-circle"></i> Создать заказ
+                    </a>
+                    <a class="btn btn-success btn-lg" href="@Url.Action("List", "Orders")" role="button">
+                        <i class="bi bi-list-check"></i> Список заказов
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-plus-circle text-primary" style="font-size: 2rem;"></i>
+                    <h5 class="card-title mt-3">Создать заказ</h5>
+                    <p class="card-text">Заполните форму и создайте новый заказ на доставку</p>
+                    <a href="@Url.Action("Create", "Orders")" class="btn btn-primary btn-sm">Перейти</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-list-check text-success" style="font-size: 2rem;"></i>
+                    <h5 class="card-title mt-3">Все заказы</h5>
+                    <p class="card-text">Просмотрите список всех созданных заказов</p>
+                    <a href="@Url.Action("List", "Orders")" class="btn btn-success btn-sm">Перейти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

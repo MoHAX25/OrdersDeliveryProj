@@ -1,0 +1,143 @@
+@model OrderDetailViewModel
+
+@{
+    ViewData["Title"] = $"Заказ {Model?.OrderNumber}";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            @if (Model != null)
+            {
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="mb-0">Детали заказа</h3>
+                            <span class="badge bg-light text-dark fs-6">@Model.OrderNumber</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label text-muted">
+                                        <strong>Номер заказа</strong>
+                                    </label>
+                                    <div class="form-control-plaintext fs-5">@Model.OrderNumber</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label text-muted">
+                                        <strong>Дата создания</strong>
+                                    </label>
+                                    <div class="form-control-plaintext">@Model.CreatedDate.ToString("dd.MM.yyyy HH:mm:ss")</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h5 class="text-primary mb-3">
+                                    <i class="bi bi-geo-alt"></i> Информация об отправителе
+                                </h5>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label text-muted">
+                                        <strong>Город отправителя</strong>
+                                    </label>
+                                    <div class="form-control-plaintext">@Model.SenderCity</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label text-muted">
+                                        <strong>Адрес отправителя</strong>
+                                    </label>
+                                    <div class="form-control-plaintext">@Model.SenderAddress</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h5 class="text-success mb-3">
+                                    <i class="bi bi-geo-alt"></i> Информация о получателе
+                                </h5>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label text-muted">
+                                        <strong>Город получателя</strong>
+                                    </label>
+                                    <div class="form-control-plaintext">@Model.RecipientCity</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label text-muted">
+                                        <strong>Адрес получателя</strong>
+                                    </label>
+                                    <div class="form-control-plaintext">@Model.RecipientAddress</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h5 class="text-warning mb-3">
+                                    <i class="bi bi-box-seam"></i> Информация о грузе
+                                </h5>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label text-muted">
+                                        <strong>Вес груза</strong>
+                                    </label>
+                                    <div class="form-control-plaintext">@Model.Weight кг</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label text-muted">
+                                        <strong>Дата забора груза</strong>
+                                    </label>
+                                    <div class="form-control-plaintext">@Model.PickupDate.ToString("dd.MM.yyyy HH:mm")</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        
+                        <div class="d-flex gap-2 mt-4">
+                            <a href="@Url.Action("List", "Orders")" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Вернуться к списку
+                            </a>
+                            <a href="@Url.Action("Create", "Orders")" class="btn btn-success">
+                                <i class="bi bi-plus-circle"></i> Создать новый заказ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger" role="alert">
+                    <i class="bi bi-exclamation-triangle"></i> <strong>Ошибка</strong>
+                    <p>Заказ не найден.</p>
+                    <a href="@Url.Action("List", "Orders")" class="btn btn-primary">Вернуться к списку</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
